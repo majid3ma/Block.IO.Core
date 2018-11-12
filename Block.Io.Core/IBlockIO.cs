@@ -1,39 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Block.Io.Core.Response;
 
-namespace Block.Io.Core {
-    public interface IBlockIO {
-        AddressWithBalance GerMyAresses(int page = 1);
-        AddressBalance GetAddressBalanceWithAddress(params string[] addresses);
-        AddressBalance GetAddressBalanceWithLabels(params string[] labels);
-        LabelAddress GetAddressByLabel(string label);
-        Address GetAddressWithAddressType(string addressType);
-        Balance GetBalance();
-        Price GetCurrentPrice(string currency = null);
-        GreenTransaction GetGreenTransaction(List<string> transactionIds);
-        ArchiveAddress GetMyArchivedAddresses();
-        NetworkFee GetNetworkFeeEstimate(Dictionary<string, double> addressAmount);
-        Address GetNewAddressWithGivenLabel(string label);
-        Address GetNewAddressWithRandomLabel();
-        RawTransaction GetRawTransaction(string txtId);
-        ReceivedTransaction GetReceivedTransaction();
-        ReceivedTransaction GetReceivedTransaction(List<string> addresses);
-        ReceivedTransaction GetReceivedTransaction(string beforeTx, List<string> addresses);
-        ReceivedTransaction GetReceivedTransactionBeforeTxId(string beforeTx);
-        ReceivedTransaction GetReceivedTransactionWithLabels(List<string> labels);
-        ReceivedTransaction GetReceivedTransactionWithUserId(List<int> user_ids);
-        SentTransaction GetSendTransaction();
-        SentTransaction GetSendTransaction(List<string> addresses);
-        SentTransaction GetSendTransaction(string beforeTx, List<string> addresses);
-        SentTransaction GetSendTransactionBeforeTxId(string beforeTx);
-        SentTransaction GetSendTransactionWithLabels(List<string> labels);
-        SentTransaction GetSendTransactionWithUserId(List<int> user_ids);
-        ArchiveAddress SetArchiveAddresses(List<string> addresses);
-        ArchiveAddress SetUnArchiveAddresses(List<string> addresses);
-        Withdraw Withdraw(Dictionary<string, double> addressAmount, string pin);
-        Withdraw WithdrawFromAddresses(List<Tuple<string, string, double>> transferAddress, string pin);
-        Withdraw WithdrawFromLabel(List<Tuple<string, string, double>> transferLabels, string pin);
-        Withdraw WithdrawFromLabelToAddress(List<Tuple<string, string, double>> transferLabels, string pin);
+namespace Block.Io.Core
+{
+    public interface IBlockIO
+    {
+        Task<AddressBalance> GetAddressBalanceWithAddressAsync(params string[] addresses);
+        Task<AddressBalance> GetAddressBalanceWithLabelsAsync(params string[] labels);
+        Task<LabelAddress> GetAddressByLabelAsync(string label);
+        Task<Address> GetAddressWithAddressTypeAsync(string addressType);
+        Task<Balance> GetBalanceAsync();
+        Task<Price> GetCurrentPriceAsync(string currency = null);
+        Task<GreenTransaction> GetGreenTransactionAsync(IEnumerable<string> transactionIds);
+        Task<ArchiveAddress> GetMyArchivedAddressesAsync();
+        Task<AddressWithBalance> GetMyAressesAsync(int page = 1);
+        Task<NetworkFee> GetNetworkFeeEstimateAsync(Dictionary<string, double> addressAmount);
+        Task<Address> GetNewAddressWithGivenLabelAsync(string label);
+        Task<Address> GetNewAddressWithRandomLabelAsync();
+        Task<RawTransaction> GetRawTransactionAsync(string txtId);
+        Task<ReceivedTransaction> GetReceivedTransactionAsync();
+        Task<ReceivedTransaction> GetReceivedTransactionAsync(IEnumerable<string> addresses);
+        Task<ReceivedTransaction> GetReceivedTransactionAsync(string beforeTx, IEnumerable<string> addresses);
+        Task<ReceivedTransaction> GetReceivedTransactionBeforeTxIdAsync(string beforeTx);
+        Task<ReceivedTransaction> GetReceivedTransactionWithLabelsAsync(IEnumerable<string> labels);
+        Task<ReceivedTransaction> GetReceivedTransactionWithUserIdAsync(IEnumerable<int> user_ids);
+        Task<SentTransaction> GetSendTransactionAsync();
+        Task<SentTransaction> GetSendTransactionAsync(IEnumerable<string> addresses);
+        Task<SentTransaction> GetSendTransactionAsync(string beforeTx, IEnumerable<string> addresses);
+        Task<SentTransaction> GetSendTransactionBeforeTxIdAsync(string beforeTx);
+        Task<SentTransaction> GetSendTransactionWithLabelsAsync(IEnumerable<string> labels);
+        Task<SentTransaction> GetSendTransactionWithUserIdAsync(IEnumerable<int> user_ids);
+        Task<ArchiveAddress> SetArchiveAddressesAsync(IEnumerable<string> addresses);
+        Task<ArchiveAddress> SetUnArchiveAddressesAsync(IEnumerable<string> addresses);
+        Task<Withdraw> WithdrawAsync(Dictionary<string, double> addressAmount, string pin);
+        Task<Withdraw> WithdrawFromAddressesAsync(IEnumerable<Tuple<string, string, double>> transferAddress, string pin);
+        Task<Withdraw> WithdrawFromLabelAsync(IEnumerable<Tuple<string, string, double>> transferLabels, string pin);
+        Task<Withdraw> WithdrawFromLabelToAddressAsync(IEnumerable<Tuple<string, string, double>> transferLabels, string pin);
     }
 }

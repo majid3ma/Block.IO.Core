@@ -14,8 +14,8 @@ namespace Block.Io.Core.Response {
         [JsonProperty("senders")]
         public string[] Senders { get; set; }
         [JsonProperty("confidence")]
-        public double Confidence { get; set; }
+        public double? Confidence { get; set; }
         [JsonProperty("propagated_by_nodes")]
-        public double PropagatedByNodes { get; set; }
+        public double? PropagatedByNodes { get; set; }
     }
 }
