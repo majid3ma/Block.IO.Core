@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Authors>Majid Alahverdi</Authors>
+    <Company />
+    <PackageProjectUrl>https://github.com/majid3ma/Block.IO.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/majid3ma/Block.IO.Core</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
