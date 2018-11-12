@@ -11,7 +11,7 @@ namespace Block.IO.Core.Test
 {
     public class MethodCallTests
     {
-        IBlockIO blockIO = new BlockIO("513d-66b4-9b15-3438");
+        IBlockIO blockIO = new BlockIO("input_API_Key");
 
         [Fact]
         public async Task CallAPI_GerMyAressesAsyncTests()
